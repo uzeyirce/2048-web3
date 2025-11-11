@@ -84,16 +84,39 @@
     Created by <a href="http://gabrielecirulli.com" target="_blank">Gabriele Cirulli.</a> Based on <a href="https://itunes.apple.com/us/app/1024!/id823499224" target="_blank">1024 by Veewo Studio</a> and conceptually similar to <a href="http://asherv.com/threes/" target="_blank">Threes by Asher Vollmer.</a>
     </p>
   </div>
+    <!-- ========== core game scripts ========== -->
+    <script src="js/bind_polyfill.js"></script>
+    <script src="js/classlist_polyfill.js"></script>
+    <script src="js/animframe_polyfill.js"></script>
+    <script src="js/keyboard_input_manager.js"></script>
+    <script src="js/html_actuator.js"></script>
+    <script src="js/grid.js"></script>
+    <script src="js/tile.js"></script>
+    <script src="js/local_storage_manager.js"></script>
+    <script src="js/game_manager.js"></script>
+    <script src="js/application.js"></script>
 
-  <script src="js/bind_polyfill.js"></script>
-  <script src="js/classlist_polyfill.js"></script>
-  <script src="js/animframe_polyfill.js"></script>
-  <script src="js/keyboard_input_manager.js"></script>
-  <script src="js/html_actuator.js"></script>
-  <script src="js/grid.js"></script>
-  <script src="js/tile.js"></script>
-  <script src="js/local_storage_manager.js"></script>
-  <script src="js/game_manager.js"></script>
-  <script src="js/application.js"></script>
-</body>
+    <!-- ✅ ethers.js MUST come BEFORE mint.js -->
+    <script src="https://cdn.jsdelivr.net/npm/ethers@6.8.0/dist/ethers.umd.min.js"></script>
+
+    <!-- ✅ mint script LAST -->
+    <script src="web3/mint.js"></script>
+<!-- ✅ CONNECT WALLET BUTTON -->
+<div id="wallet-box" style="position:fixed; top:15px; right:15px; z-index:9999;">
+  <button id="connect-btn" 
+          style="padding:10px 18px; border-radius:8px; font-size:16px; cursor:pointer;">
+    Connect Wallet
+  </button>
+
+  <div id="wallet-status" 
+       style="margin-top:6px; color:#666; font-size:14px;">
+       Not connected
+  </div>
+</div>
+
+<script src="web3/wallet.js"></script>
+  </body>
+
 </html>
+
+
