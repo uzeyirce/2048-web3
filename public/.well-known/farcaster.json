@@ -5,7 +5,7 @@
     "signature": "QnCLHLMoxBexRNGvrvtRDUoap1WoQVdr41RAoEScBw7gJFvBH3ZtHnOz5lV6tXbVxoFZUnjI1h6ORY7PLdjfcXxw="
   },
   "miniapp": {
-    "version": "1.0.0",
+    "version": 1,
     "id": "2048-base",
     "name": "2048 on Base",
     "description": "Play 2048 and mint your NFT badge on Base!",
