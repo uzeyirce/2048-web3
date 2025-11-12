@@ -6,7 +6,7 @@
     },
     {
       "source": "/(.*)",
-      "destination": "/index.html"
+      "destination": "/dist/index.html" //!!! BURAYI GÜNCELLEDİK !!!
     }
   ],
   "headers": [
@@ -19,4 +19,3 @@
   ],
   "cleanUrls": true
 }
-
