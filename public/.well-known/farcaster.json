@@ -4,14 +4,16 @@
   "description": "Play 2048 and mint your NFT badge on Base!",
   "iconUrl": "https://2048base.vercel.app/icon.png",
   "webUrl": "https://2048base.vercel.app",
-  "contractAddresses": ["0x7E173231947A1EbCd3811474fe781AF87076B018"],
+  "contractAddresses": [
+    "0x7E17323194741Ebcd3811474Fe781AF87076B018"
+  ],
   "accountAssociation": {
-    "header": "eyJmaWQiOjE0MjI4MzcsInR5cGUiOiJjdXN0b2R5Iiwia2V5IjoiMHgzOTAxMTdDMWUwYThBNzI2MTRkMEY5NjRmNzFERUY1YmFiQjdlRkZkIn0",
-    "payload": "eyJkb21haW4iOiIyMDQ4YmFzZS52ZXJjZWwuYXBwIn0",
-    "signature": "QnCLHLMoxBexRNGrvtRDUoqp1WoQVdr41RAoEScBw7gJFvBH3ZtHnOz5lV6tXbVxoFZUnjIIh6ORy7PLdjfcXxw="
+    "header": "eyJmaWQiOjE0MjI4MzcsInR5cGUiOiJjdXN0b2RzIiwia2V5IjoiMHgzOTAxMTdDMWUuYThBNzI2MTRkMEY5NjRmNzFERUY1YmFiOjdlRkZkIn0",
+    "payload": "eyJkb2lhW4OiIyMDQ4YmFzZS52ZXJzZXJvWXBwIn0",
+    "signature": "QnCLHLMoxBexRNGvrvtRDUoap1WoQVdr41RAoEScBw7gJFvBH3ZtHnOz5lV6tXbVxoFZUnjI1h6ORY7PLdjfcXxw="
+  },
+  "baseBuilder": {
+    "ownerAddress": "0xCFD9B2B19d50Fc1f0320B7e902A07d1bc04C291A"
   }
-},
-"baseBuilder": {
-  "ownerAddress": "0xCFD9B2B19d50Fc1f0320B7e902A07d1bc04C291A"
 }
-}
+
