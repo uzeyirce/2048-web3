@@ -10,6 +10,11 @@
   "developer": {
     "websiteUrl": "https://turquoiselab.io",
     "contactEmail": "support@turquoiselab.io"
+  },
+  "accountAssociation": {
+    "header": "eyJmaWxlOiJfQW1JfMZcsInR5cCI6IkpXVCJ9",
+    "payload": "eyJkb2JlaW4iOiJMYDQ4YmFzZS52ZXJjZWwuYXBwIiwidGltZXN0YW1wIjoxNzYyOTM5MjI1fQ",
+    "signature": "QnCnLLHMoxBexRNGvrtrRDUoqp1Woz..."
   }
 }
 
