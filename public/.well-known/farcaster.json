@@ -10,7 +10,7 @@
   "developer": {
     "websiteUrl": "https://turquoiselab.io",
     "contactEmail": "support@turquoiselab.io"
-{
+  },
   "accountAssociation": {
     "header": "eyJmaWQiOjE0MjI4MzcsInR5cGUiOiJjdXN0b2R5Iiwia2V5IjoiMHgzOTAxMTdDMWUwYThBNzI2MTRkMEY5NjRmNzFERUY1YmFiQjdlRkZkIn0",
     "payload": "eyJkb21haW4iOiIyMDQ4YmFzZS52ZXJjZWwuYXBwIn0",
