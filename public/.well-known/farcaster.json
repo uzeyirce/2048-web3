@@ -10,5 +10,8 @@
     "payload": "eyJkb21haW4iOiIyMDQ4YmFzZS52ZXJjZWwuYXBwIn0",
     "signature": "QnCLHLMoxBexRNGrvtRDUoqp1WoQVdr41RAoEScBw7gJFvBH3ZtHnOz5lV6tXbVxoFZUnjIIh6ORy7PLdjfcXxw="
   }
+},
+"baseBuilder": {
+  "ownerAddress": "0xCFD9B2B19d50Fc1f0320B7e902A07d1bc04C291A"
 }
-
+}
