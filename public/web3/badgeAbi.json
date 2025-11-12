@@ -1,0 +1,9 @@
+[
+  {
+    "inputs": [],
+    "name": "mintBadge",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]

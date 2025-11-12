@@ -1,139 +1,129 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-    />
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>2048 Web3 Game</title>
 
-    <title>2048 Base</title>
-    <meta
-      name="description"
-      content="Play 2048 onchain, connect your wallet, and mint a commemorative NFT badge on Base when you reach the 2048 tile."
-    />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="2048 Base" />
-    <meta property="og:description" content="Reach 2048 and mint your Base NFT badge." />
-    <meta property="og:image" content="https://2048base.vercel.app/meta/icons/2048_base_blue_icon_medium.png" />
-    <meta property="og:url" content="https://2048base.vercel.app" />
+  <!-- Meta and Farcaster Frame -->
+  <meta property="og:title" content="2048 Web3 Game" />
+  <meta property="og:description" content="Reach 2048 and mint your NFT badge on Base!" />
+  <meta property="og:image" content="https://2048.turquoiselab.io/meta/icons/2048_base_blue_icon_medium.png" />
+  <meta property="og:url" content="https://2048.turquoiselab.io" />
+  <meta name="twitter:card" content="summary_large_image" />
 
-    <!-- Farcaster / Base MiniApp metadata -->
-    <meta property="fc:frame" content="vNext" />
-    <meta property="fc:frame:image" content="https://2048base.vercel.app/meta/icons/2048_base_blue_icon_medium.png" />
-    <meta property="fc:frame:button:1" content="Play 2048" />
-    <meta property="fc:frame:post_url" content="https://2048base.vercel.app/" />
+  <meta property="fc:frame" content="vNext" />
+  <meta property="fc:frame:image" content="https://2048.turquoiselab.io/meta/icons/2048_base_blue_icon_medium.png" />
+  <meta property="fc:frame:button:1" content="Play Game" />
+  <meta property="fc:frame:post_url" content="https://2048.turquoiselab.io/" />
 
-    <link rel="manifest" href="/manifest.json" />
-    <link rel="stylesheet" href="/style/main.css" type="text/css" />
-    <link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" href="/meta/icons/2048_base_blue_icon_medium.png" />
-    <meta name="theme-color" content="#113355" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="HandheldFriendly" content="True" />
-    <meta name="MobileOptimized" content="320" />
-  </head>
-  <body>
-    <div id="wallet-box" class="wallet-box">
-      <button id="connect-btn" class="wallet-connect-button">Connect Wallet</button>
-      <div id="wallet-status" class="wallet-status">Not connected</div>
+  <link href="style/main.css" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="apple-touch-icon" href="meta/apple-touch-icon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+</head>
+
+<body>
+  <!-- ✅ CONNECT WALLET BUTTON -->
+  <div id="wallet-box" style="position:fixed; top:15px; right:15px; z-index:9999;">
+    <button id="connect-btn" 
+            style="padding:10px 18px; border-radius:8px; font-size:16px; cursor:pointer;">
+      Connect Wallet
+    </button>
+    <div id="wallet-status" 
+         style="margin-top:6px; color:#666; font-size:14px;">
+      Not connected
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="heading">
+      <h1 class="title">2048</h1>
+      <div class="scores-container">
+        <div class="score-container">0</div>
+        <div class="best-container">0</div>
+      </div>
     </div>
 
-    <div class="container">
-      <div class="heading">
-        <h1 class="title">2048</h1>
-        <div class="scores-container">
-          <div class="score-container">0</div>
-          <div class="best-container">0</div>
-        </div>
-      </div>
-
-      <div class="above-game">
-        <p class="game-intro">
-          Join the numbers and get to the <strong>2048 tile!</strong>
-        </p>
-        <a class="restart-button">New Game</a>
-      </div>
-
-      <div class="game-container">
-        <div class="game-message">
-          <p></p>
-          <div class="lower">
-            <a class="keep-playing-button">Keep going</a>
-            <a class="retry-button">Try again</a>
-          </div>
-        </div>
-
-        <div class="grid-container">
-          <div class="grid-row">
-            <div class="grid-cell"></div>
-            <div class="grid-cell"></div>
-            <div class="grid-cell"></div>
-            <div class="grid-cell"></div>
-          </div>
-          <div class="grid-row">
-            <div class="grid-cell"></div>
-            <div class="grid-cell"></div>
-            <div class="grid-cell"></div>
-            <div class="grid-cell"></div>
-          </div>
-          <div class="grid-row">
-            <div class="grid-cell"></div>
-            <div class="grid-cell"></div>
-            <div class="grid-cell"></div>
-            <div<div class="grid-cell"></div>
-          </div>
-          <div class="grid-row">
-            <div class="grid-cell"></div>
-            <div class="grid-cell"></div>
-            <div class="grid-cell"></div>
-            <div class="grid-cell"></div>
-          </div>
-        </div>
-
-        <div class="tile-container"></div>
-      </div>
-
-      <p class="game-explanation">
-        <strong class="important">How to play:</strong>
-        Use your <strong>arrow keys</strong> to move the tiles. When two tiles with the same number touch, they
-        <strong>merge into one!</strong>
-      </p>
-      <hr />
-      <p>
-        <strong class="important">Note:</strong>
-        This site is the official version of 2048. You can play it on your phone via
-        <a href="http://git.io/2048" target="_blank" rel="noopener noreferrer">http://git.io/2048</a>.
-        All other apps or sites are derivatives or fakes, and should be used with caution.
-      </p>
-      <hr />
-      <p>
-        Created by <a href="http://gabrielecirulli.com" target="_blank" rel="noopener noreferrer">Gabriele Cirulli</a>.
-        Based on <a href="https://itunes.apple.com/us/app/1024!/id823499224" target="_blank" rel="noopener noreferrer">1024 by Veewo Studio</a>
-        and conceptually similar to <a href="http://asherv.com/threes/" target="_blank" rel="noopener noreferrer">Threes by Asher Vollmer</a>.
-      </p>
+    <div class="above-game">
+      <p class="game-intro">Join the numbers and get to the <strong>2048 tile!</strong></p>
+      <a class="restart-button">New Game</a>
     </div>
 
-    <!-- Core game scripts (absolute paths for Vercel static hosting) -->
-    <script src="/js/bind_polyfill.js"></script>
-    <script src="/js/classlist_polyfill.js"></script>
-    <script src="/js/animframe_polyfill.js"></script>
-    <script src="/js/keyboard_input_manager.js"></script>
-    <script src="/js/html_actuator.js"></script>
-    <script src="/js/grid.js"></script>
-    <script src="/js/tile.js"></script>
-    <script src="/js/local_storage_manager.js"></script>
-    <script src="/js/game_manager.js"></script>
-    <script src="/js/application.js"></script>
+    <div class="game-container">
+      <div class="game-message">
+        <p></p>
+        <div class="lower">
+          <a class="keep-playing-button">Keep going</a>
+          <a class="retry-button">Try again</a>
+        </div>
+      </div>
 
-    <!-- Load ethers.js v6 prior to mint.js -->
-    <script src="https://cdn.jsdelivr.net/npm/ethers@6.8.0/dist/ethers.umd.min.js" integrity="sha384-CQYucs5cjox96D65gis6pZeRAEIJvMmu3DK6t6ifREyFsClv4aSLBLQPG7GXy3Y1" crossorigin="anonymous"></script>
+      <div class="grid-container">
+        <div class="grid-row">
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+        </div>
+        <div class="grid-row">
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+        </div>
+        <div class="grid-row">
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+        </div>
+        <div class="grid-row">
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+        </div>
+      </div>
 
-    <!-- Web3 integration scripts -->
-    <script src="/web3/mint.js"></script>
-    <script src="/web3/wallet.js"></script>
-  </body>
+      <div class="tile-container"></div>
+    </div>
+
+    <p class="game-explanation">
+      <strong class="important">How to play:</strong> Use your <strong>arrow keys</strong> to move the tiles. When two tiles with the same number touch, they <strong>merge into one!</strong>
+    </p>
+    <hr>
+    <p>
+      <strong class="important">Note:</strong> This site is the official version of 2048. You can play it on your phone via 
+      <a href="http://git.io/2048">http://git.io/2048.</a> 
+      All other apps or sites are derivatives or fakes, and should be used with caution.
+    </p>
+    <hr>
+    <p>
+      Created by <a href="http://gabrielecirulli.com" target="_blank">Gabriele Cirulli.</a> 
+      Based on <a href="https://itunes.apple.com/us/app/1024!/id823499224" target="_blank">1024 by Veewo Studio</a> 
+      and conceptually similar to <a href="http://asherv.com/threes/" target="_blank">Threes by Asher Vollmer.</a>
+    </p>
+  </div>
+
+  <!-- ✅ Game scripts -->
+  <script src="js/bind_polyfill.js"></script>
+  <script src="js/classlist_polyfill.js"></script>
+  <script src="js/animframe_polyfill.js"></script>
+  <script src="js/keyboard_input_manager.js"></script>
+  <script src="js/html_actuator.js"></script>
+  <script src="js/grid.js"></script>
+  <script src="js/tile.js"></script>
+  <script src="js/local_storage_manager.js"></script>
+  <script src="js/game_manager.js"></script>
+  <script src="js/application.js"></script>
+
+  <!-- ✅ ethers.js MUST come BEFORE mint.js -->
+  <script src="https://cdn.jsdelivr.net/npm/ethers@6.8.0/dist/ethers.umd.min.js"></script>
+
+  <!-- ✅ mint + wallet scripts -->
+  <script src="web3/mint.js"></script>
+  <script src="web3/wallet.js"></script>
+
+</body>
 </html>
 
