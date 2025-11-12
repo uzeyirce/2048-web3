@@ -1,0 +1,15 @@
+{
+  "id": "2048-base",
+  "name": "2048 on Base",
+  "description": "Play the classic 2048 rebuilt on Base with NFT rewards!",
+  "iconUrl": "https://2048base.vercel.app/icon.png",
+  "webUrl": "https://2048base.vercel.app",
+  "contractAddresses": [
+    "0x7E173231947A1EbCd3811474fe781AF87076B018"
+  ],
+  "developer": {
+    "websiteUrl": "https://turquoiselab.io",
+    "contactEmail": "support@turquoiselab.io"
+  }
+}
+
