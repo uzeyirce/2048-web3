@@ -1,16 +1,25 @@
 {
-  "id": "2048-base",
-  "name": "2048 on Base",
-  "description": "Play 2048 and mint your NFT badge on Base!",
-  "iconUrl": "https://2048base.vercel.app/icon.png",
-  "webUrl": "https://2048base.vercel.app",
-  "contractAddresses": [
-    "0x7E17323194741Ebcd3811474Fe781AF87076B018"
-  ],
   "accountAssociation": {
     "header": "eyJmaWQiOjE0MjI4MzcsInR5cGUiOiJjdXN0b2RzIiwia2V5IjoiMHgzOTAxMTdDMWUuYThBNzI2MTRkMEY5NjRmNzFERUY1YmFiOjdlRkZkIn0",
     "payload": "eyJkb2lhW4OiIyMDQ4YmFzZS52ZXJzZXJvWXBwIn0",
     "signature": "QnCLHLMoxBexRNGvrvtRDUoap1WoQVdr41RAoEScBw7gJFvBH3ZtHnOz5lV6tXbVxoFZUnjI1h6ORY7PLdjfcXxw="
+  },
+  "miniapp": {
+    "id": "2048-base",
+    "name": "2048 on Base",
+    "description": "Play 2048 and mint your NFT badge on Base!",
+    "iconUrl": "https://2048base.vercel.app/icon.png",
+    "webUrl": "https://2048base.vercel.app",
+    "contractAddresses": [
+      "0x7E17323194741Ebcd3811474Fe781AF87076B018"
+    ],
+    "developer": {
+      "websiteUrl": "https://turquoiselab.io",
+      "contactEmail": "support@turquoiselab.io"
+    }
+  },
+  "baseBuilder": {
+    "ownerAddress": "0xCFD9B2B19d50Fc1f0320B7e902A07d1bc04C291A"
   }
 }
 
