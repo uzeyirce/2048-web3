@@ -5,11 +5,13 @@
     "signature": "QnCLHLMoxBexRNGvrvtRDUoap1WoQVdr41RAoEScBw7gJFvBH3ZtHnOz5lV6tXbVxoFZUnjI1h6ORY7PLdjfcXxw="
   },
   "miniapp": {
+    "version": "1.0.0",
     "id": "2048-base",
     "name": "2048 on Base",
     "description": "Play 2048 and mint your NFT badge on Base!",
     "iconUrl": "https://2048base.vercel.app/icon.png",
     "webUrl": "https://2048base.vercel.app",
+    "homeUrl": "https://2048base.vercel.app",
     "contractAddresses": [
       "0x7E17323194741Ebcd3811474Fe781AF87076B018"
     ],
