@@ -1,12 +1,18 @@
 {
-  "version": 2,
-  "builds": [
-    { "src": "index.html", "use": "@vercel/static" },
-    { "src": "**/*", "use": "@vercel/static" }
+  "rewrites": [
+    {
+      "source": "/.well-known/(.*)",
+      "destination": "/.well-known/$1"
+    }
   ],
-  "routes": [
-    { "src": "/(.*)", "dest": "/$1" },
-    { "src": "/", "dest": "/index.html" }
-  ]
+  "headers": [
+    {
+      "source": "/.well-known/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=600" }
+      ]
+    }
+  ],
+  "cleanUrls": true
 }
 
