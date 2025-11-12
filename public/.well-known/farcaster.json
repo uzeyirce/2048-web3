@@ -10,11 +10,11 @@
   "developer": {
     "websiteUrl": "https://turquoiselab.io",
     "contactEmail": "support@turquoiselab.io"
-  },
+{
   "accountAssociation": {
-    "header": "eyJmaWxlOiJfQW1JfMZcsInR5cCI6IkpXVCJ9",
-    "payload": "eyJkb2JlaW4iOiJMYDQ4YmFzZS52ZXJjZWwuYXBwIiwidGltZXN0YW1wIjoxNzYyOTM5MjI1fQ",
-    "signature": "QnCnLLHMoxBexRNGvrtrRDUoqp1Woz..."
+    "header": "eyJmaWQiOjE0MjI4MzcsInR5cGUiOiJjdXN0b2R5Iiwia2V5IjoiMHgzOTAxMTdDMWUwYThBNzI2MTRkMEY5NjRmNzFERUY1YmFiQjdlRkZkIn0",
+    "payload": "eyJkb21haW4iOiIyMDQ4YmFzZS52ZXJjZWwuYXBwIn0",
+    "signature": "QnCLHLMoxBexRNGrvtRDUoqp1WoQVdr41RAoEScBw7gJFvBH3ZtHnOz5lV6tXbVxoFZUnjIIh6ORy7PLdjfcXxw="
   }
 }
 
