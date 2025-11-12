@@ -1,0 +1,15 @@
+{
+  "id": "2048-web3",
+  "name": "2048 Web3 Game",
+  "description": "The classic 2048 puzzle rebuilt on Base with NFT rewards.",
+  "iconUrl": "https://2048.turquoiselab.io/icon.png",
+  "webUrl": "https://2048.turquoiselab.io",
+  "contractAddresses": [
+    "0x7E173231947A1EbCd3811474fe781AF87076B018"
+  ],
+  "developer": {
+    "websiteUrl": "https://turquoiselab.io",
+    "contactEmail": "support@turquoiselab.io"
+  }
+}
+
