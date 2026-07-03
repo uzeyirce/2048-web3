@@ -336,6 +336,7 @@ hr {
     border-radius: $tile-border-radius;
 
     background: $tile-color;
+    color: $text-color; // dark green — keeps numbers readable on light tiles
     text-align: center;
     font-weight: bold;
     z-index: 10;

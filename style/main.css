@@ -391,6 +391,7 @@ hr {
 .tile .tile-inner {
   border-radius: 3px;
   background: #E3EDE6;
+  color: #1B4332;
   text-align: center;
   font-weight: bold;
   z-index: 10;

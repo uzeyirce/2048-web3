@@ -1,16 +1,11 @@
-// Robinhood Chain network config
-// VERIFY BEFORE MAINNET LAUNCH: these values come from the public
-// Robinhood Chain TESTNET docs (docs.robinhood.com/chain/connecting) as of
-// July 2026. Mainnet may use a different chain ID / RPC -- confirm the
-// current values in the official docs (or your wallet's auto-detect)
-// before pointing real users at this. Do not trust third-party "leaked"
-// chain IDs from meme sites.
+// Robinhood Chain — MAINNET config (verified against docs.robinhood.com/chain
+// and docs.robinhood.com/chain/connecting, July 2026)
 const ROBINHOOD_CHAIN = {
-  chainId: "0xB626", // 46630 (Robinhood Chain Testnet) -- swap for mainnet ID once confirmed
-  chainName: "Robinhood Chain Testnet",
+  chainId: "0x1237", // 4663 (Robinhood Chain Mainnet)
+  chainName: "Robinhood Chain",
   nativeCurrency: { name: "ETH", symbol: "ETH", decimals: 18 },
-  rpcUrls: ["https://rpc.testnet.chain.robinhood.com"],
-  blockExplorerUrls: ["https://explorer.testnet.chain.robinhood.com"]
+  rpcUrls: ["https://rpc.mainnet.chain.robinhood.com"],
+  blockExplorerUrls: ["https://robinhoodchain.blockscout.com"]
 };
 
 // Add / switch to Robinhood Chain in the connected wallet
@@ -44,7 +39,7 @@ async function ensureRobinhoodChain() {
 // Wallet Connect Logic
 async function connectWallet() {
   if (!window.ethereum) {
-    alert("Cüzdan bulunamadı. Lütfen Rabby veya MetaMask kurun.");
+    alert("No wallet found. Please install Rabby or MetaMask.");
     return;
   }
 
@@ -56,7 +51,7 @@ async function connectWallet() {
     await ensureRobinhoodChain();
 
     const btn = document.getElementById("connect-btn");
-    btn.innerText = "Bağlandı ✅";
+    btn.innerText = "Connected ✅";
     btn.classList.add("connected");
     document.getElementById("wallet-status").innerText =
       wallet.slice(0, 6) + "..." + wallet.slice(-4);
