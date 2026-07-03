@@ -1044,3 +1044,87 @@ hr {
   border: none;
   font-size: 15px;
 }
+
+.leaderboard {
+  margin-top: 30px;
+  background: #123524;
+  border-radius: 10px;
+  padding: 20px 24px;
+  box-sizing: border-box;
+}
+
+.leaderboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.leaderboard-header h2 {
+  margin: 0;
+  font-size: 20px;
+  color: #F5FFF8;
+}
+
+.leaderboard-refresh-btn {
+  background: transparent;
+  border: 1px solid rgba(0, 200, 83, 0.4);
+  color: #00C853;
+  border-radius: 6px;
+  padding: 5px 12px;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.leaderboard-refresh-btn:hover {
+  background: rgba(0, 200, 83, 0.1);
+}
+
+.leaderboard-hint {
+  font-size: 13px;
+  color: rgba(220, 238, 226, 0.55);
+  margin: 8px 0 16px;
+}
+
+.leaderboard-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.leaderboard-row {
+  display: grid;
+  grid-template-columns: 40px 1fr auto;
+  align-items: center;
+  padding: 10px 8px;
+  border-bottom: 1px solid rgba(0, 200, 83, 0.12);
+  font-size: 14px;
+  color: #DCEEE2;
+}
+.leaderboard-row:last-child {
+  border-bottom: none;
+}
+.leaderboard-row.is-me {
+  background: rgba(0, 200, 83, 0.08);
+  border-radius: 6px;
+}
+
+.leaderboard-rank {
+  color: rgba(220, 238, 226, 0.5);
+  font-weight: bold;
+}
+
+.leaderboard-wallet {
+  font-family: monospace;
+}
+
+.leaderboard-score {
+  font-weight: bold;
+  color: #00C853;
+  text-align: right;
+}
+
+.leaderboard-empty {
+  padding: 14px 8px;
+  color: rgba(220, 238, 226, 0.5);
+  font-size: 14px;
+  text-align: center;
+}

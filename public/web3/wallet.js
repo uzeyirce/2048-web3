@@ -50,6 +50,8 @@ async function connectWallet() {
 
     await ensureRobinhoodChain();
 
+    window.currentWallet = wallet;
+
     const btn = document.getElementById("connect-btn");
     btn.innerText = "Connected ✅";
     btn.classList.add("connected");
@@ -57,6 +59,8 @@ async function connectWallet() {
       wallet.slice(0, 6) + "..." + wallet.slice(-4);
 
     console.log("Wallet connected:", wallet);
+
+    window.dispatchEvent(new CustomEvent("game2048:walletConnected", { detail: { wallet } }));
 
     if (window.checkMintStatus) {
       window.checkMintStatus(wallet);

@@ -24,6 +24,18 @@ HTMLActuator.prototype.actuate = function (grid, metadata) {
     self.updateScore(metadata.score);
     self.updateBestScore(metadata.bestScore);
 
+    // Notify the leaderboard/wallet layer without coupling game logic to it
+    if (window.dispatchEvent) {
+      window.dispatchEvent(new CustomEvent("game2048:score", {
+        detail: {
+          score: metadata.score,
+          terminated: metadata.terminated,
+          over: metadata.over,
+          won: metadata.won
+        }
+      }));
+    }
+
     if (metadata.terminated) {
       if (metadata.over) {
         self.message(false); // You lose

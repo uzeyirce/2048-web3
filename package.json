@@ -1,0 +1,8 @@
+{
+  "name": "2048-robinhood",
+  "private": true,
+  "version": "1.0.0",
+  "dependencies": {
+    "@vercel/kv": "^2.0.0"
+  }
+}

@@ -6,7 +6,7 @@
 
   <!-- Meta Tags -->
   <meta property="og:title" content="2048 Robinhood" />
-  <meta property="og:description" content="Play 2048 on Robinhood Chain and earn $2048!" />
+  <meta property="og:description" content="Play 2048 on Robinhood Chain and earn $2048! The creator wallet is used for reward distribution and game development only." />
   <meta property="og:image" content="https://2048.turquoiselab.io/meta/icons/2048_base_blue_icon_medium.png" />
   <meta property="og:url" content="https://2048robin.vercel.app" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -107,6 +107,17 @@
       When two tiles with the same number touch, they <strong>merge into one!</strong><br><br>
       <strong>Higher score = more $2048 rewards on Robinhood Chain!</strong>
     </p>
+
+    <div class="leaderboard">
+      <div class="leaderboard-header">
+        <h2>Leaderboard</h2>
+        <button id="leaderboard-refresh" class="leaderboard-refresh-btn" type="button">Refresh</button>
+      </div>
+      <p class="leaderboard-hint">Connect your wallet and finish a game to enter your best score.</p>
+      <ul id="leaderboard-list" class="leaderboard-list">
+        <li class="leaderboard-empty">Loading...</li>
+      </ul>
+    </div>
   </div>
 
   <!-- Game scripts -->
@@ -124,9 +135,10 @@
   <!-- ethers.js -->
   <script src="https://cdn.jsdelivr.net/npm/ethers@6.8.0/dist/ethers.umd.min.js"></script>
 
-  <!-- wallet + mint + welcome modal -->
+  <!-- wallet + mint + leaderboard + welcome modal -->
   <script src="web3/wallet.js"></script>
   <script src="web3/mint.js"></script>
+  <script src="web3/leaderboard.js"></script>
   <script src="web3/welcome.js"></script>
 </body>
 </html>
