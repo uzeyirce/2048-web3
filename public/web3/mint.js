@@ -1,7 +1,20 @@
-// ✅ UPDATED CONTRACT ADDRESS (paste new one here)
-const contractAddress = "0x7E173231947A1EbCd3811474fe781AF87076B018";
+// =====================================================================
+// PLACEHOLDER / TODO
+// This file still points at a Base Sepolia testnet demo contract left
+// over from the original template. Before going live on Robinhood Chain
+// you need to:
+//   1. Deploy your own reward/claim contract on Robinhood Chain
+//      (see docs.robinhood.com/chain/deploy-smart-contracts), OR
+//   2. Decide reward distribution will be off-chain (backend tracks
+//      scores, periodic on-chain airdrop of $2048 to top players --
+//      cheaper, recommended for a first launch).
+// The $2048 ERC-20 token itself gets created separately via
+// fun.noxa.fi -- this file is only for optional on-chain score/reward
+// verification, not for the token contract itself.
+// =====================================================================
 
-// ✅ ABI for mintBadge()
+const contractAddress = "0x7E173231947A1EbCd3811474fe781AF87076B018"; // TODO: replace with your deployed contract
+
 const contractAbi = [
   {
     "inputs": [],
@@ -12,59 +25,55 @@ const contractAbi = [
   }
 ];
 
-// mint function
+// Claim/mint call -- only works once a real contract is deployed above.
 async function mintBadge() {
   if (!window.ethereum) {
-    alert("MetaMask not detected");
+    alert("Cüzdan bulunamadı.");
     return;
   }
 
   try {
-    console.log("⛓ Connecting wallet...");
+    if (window.ensureRobinhoodChain) {
+      await window.ensureRobinhoodChain();
+    }
+
     const provider = new ethers.BrowserProvider(window.ethereum);
     const signer = await provider.getSigner();
-
     const player = await signer.getAddress();
-    console.log("👤 Player:", player);
 
-    console.log("🚀 Calling mintBadge()...");
     const contract = new ethers.Contract(contractAddress, contractAbi, signer);
-
     const tx = await contract.mintBadge();
     await tx.wait();
 
-    alert("✅ NFT Badge successfully minted!");
+    alert("Ödül talebi başarılı!");
   } catch (err) {
-    console.error("❌ Mint failed:", err);
+    console.error("Mint failed:", err);
   }
 }
 
-// expose globally
 window.mintBadge = mintBadge;
+
+// Read-only status check against Robinhood Chain testnet public RPC.
+// (Rate-limited -- fine for demo, swap for an Alchemy endpoint before
+// real traffic: docs.robinhood.com/chain/connecting)
 window.checkMintStatus = async function (player) {
   try {
-    const provider = new ethers.JsonRpcProvider("https://sepolia.base.org");
+    const provider = new ethers.JsonRpcProvider("https://rpc.testnet.chain.robinhood.com");
     const contract = new ethers.Contract(contractAddress, [
       {
-        "inputs":[{ "internalType": "address", "name": "", "type": "address" }],
+        "inputs": [{ "internalType": "address", "name": "", "type": "address" }],
         "name": "hasWon",
-        "outputs":[{ "internalType": "bool", "name": "", "type": "bool" }],
+        "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
         "stateMutability": "view",
         "type": "function"
       }
     ], provider);
 
-    const minted = await contract.hasWon(player);
-
-    if (minted) {
-      document.getElementById("wallet-status").innerText += " ✅ Minted";
-    } else {
-      document.getElementById("wallet-status").innerText += " ❌ Not Minted";
-    }
-
-    console.log("Mint Status:", minted);
+    const won = await contract.hasWon(player);
+    const statusEl = document.getElementById("wallet-status");
+    if (statusEl) statusEl.innerText += won ? " ✅" : "";
   } catch (err) {
-    console.error("Mint status check error:", err);
+    // Expected to fail until a real contract is deployed -- don't alert the user.
+    console.warn("Mint status check skipped (no live contract yet):", err.message);
   }
 };
-

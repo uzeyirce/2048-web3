@@ -2,19 +2,14 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>2048 Web3 Game</title>
+  <title>2048 Robinhood</title>
 
-  <!-- Meta and Farcaster Frame -->
-  <meta property="og:title" content="2048 Web3 Game" />
-  <meta property="og:description" content="Reach 2048 and mint your NFT badge on Base!" />
+  <!-- Meta Tags -->
+  <meta property="og:title" content="2048 Robinhood" />
+  <meta property="og:description" content="Play 2048 on Robinhood Chain and earn $2048!" />
   <meta property="og:image" content="https://2048.turquoiselab.io/meta/icons/2048_base_blue_icon_medium.png" />
-  <meta property="og:url" content="https://2048.turquoiselab.io" />
+  <meta property="og:url" content="https://2048robin.vercel.app" />
   <meta name="twitter:card" content="summary_large_image" />
-
-  <meta property="fc:frame" content="vNext" />
-  <meta property="fc:frame:image" content="https://2048.turquoiselab.io/meta/icons/2048_base_blue_icon_medium.png" />
-  <meta property="fc:frame:button:1" content="Play Game" />
-  <meta property="fc:frame:post_url" content="https://2048.turquoiselab.io/" />
 
   <link href="style/main.css" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="favicon.ico">
@@ -23,21 +18,36 @@
 </head>
 
 <body>
-  <!-- ✅ CONNECT WALLET BUTTON -->
-  <div id="wallet-box" style="position:fixed; top:15px; right:15px; z-index:9999;">
-    <button id="connect-btn" 
-            style="padding:10px 18px; border-radius:8px; font-size:16px; cursor:pointer;">
-      Connect Wallet
-    </button>
-    <div id="wallet-status" 
-         style="margin-top:6px; color:#666; font-size:14px;">
-      Not connected
+  <!-- WELCOME / ANNOUNCEMENT MODAL (first visit only) -->
+  <div id="welcome-overlay" class="welcome-overlay">
+    <div class="welcome-modal">
+      <span class="welcome-badge">Robinhood Chain &middot; Testnet</span>
+      <h2>2048 artık Robinhood Chain'de</h2>
+      <p>
+        Klasik 2048'i oyna, skorunu yükselt ve <strong>$2048</strong> token
+        ekonomisine katıl. Oyun herkese ücretsiz &mdash; cüzdan bağlamak
+        sadece ödüller ve liderlik tablosu için gerekir.
+      </p>
+      <p class="welcome-disclaimer">
+        Bu proje Robinhood Markets, Inc. ile resmi olarak ilişkili değildir
+        ve bağımsız bir topluluk projesidir. Şu an Robinhood Chain testnet
+        üzerinde çalışır; token ödülleri deneyseldir.
+      </p>
+      <div class="welcome-actions">
+        <button id="welcome-close" class="welcome-close">Oynamaya başla</button>
+      </div>
     </div>
+  </div>
+
+  <!-- CONNECT WALLET BUTTON -->
+  <div id="wallet-box">
+    <button id="connect-btn">Connect Wallet</button>
+    <div id="wallet-status">Not connected</div>
   </div>
 
   <div class="container">
     <div class="heading">
-      <h1 class="title">2048</h1>
+      <h1 class="title">2048 Robinhood</h1>
       <div class="scores-container">
         <div class="score-container">0</div>
         <div class="best-container">0</div>
@@ -45,7 +55,10 @@
     </div>
 
     <div class="above-game">
-      <p class="game-intro">Join the numbers and get to the <strong>2048 tile!</strong></p>
+      <p class="game-intro">
+        Join the numbers and get to the <strong>2048 tile!</strong><br>
+        Earn <strong>$2048</strong> on Robinhood Chain!
+      </p>
       <a class="restart-button">New Game</a>
     </div>
 
@@ -89,23 +102,13 @@
     </div>
 
     <p class="game-explanation">
-      <strong class="important">How to play:</strong> Use your <strong>arrow keys</strong> to move the tiles. When two tiles with the same number touch, they <strong>merge into one!</strong>
-    </p>
-    <hr>
-    <p>
-      <strong class="important">Note:</strong> This site is the official version of 2048. You can play it on your phone via 
-      <a href="http://git.io/2048">http://git.io/2048.</a> 
-      All other apps or sites are derivatives or fakes, and should be used with caution.
-    </p>
-    <hr>
-    <p>
-      Created by <a href="http://gabrielecirulli.com" target="_blank">Gabriele Cirulli.</a> 
-      Based on <a href="https://itunes.apple.com/us/app/1024!/id823499224" target="_blank">1024 by Veewo Studio</a> 
-      and conceptually similar to <a href="http://asherv.com/threes/" target="_blank">Threes by Asher Vollmer.</a>
+      <strong>How to play:</strong> Use your <strong>arrow keys</strong> to move the tiles.
+      When two tiles with the same number touch, they <strong>merge into one!</strong><br><br>
+      <strong>Higher score = more $2048 rewards on Robinhood Chain!</strong>
     </p>
   </div>
 
-  <!-- ✅ Game scripts -->
+  <!-- Game scripts -->
   <script src="js/bind_polyfill.js"></script>
   <script src="js/classlist_polyfill.js"></script>
   <script src="js/animframe_polyfill.js"></script>
@@ -117,13 +120,12 @@
   <script src="js/game_manager.js"></script>
   <script src="js/application.js"></script>
 
-  <!-- ✅ ethers.js MUST come BEFORE mint.js -->
+  <!-- ethers.js -->
   <script src="https://cdn.jsdelivr.net/npm/ethers@6.8.0/dist/ethers.umd.min.js"></script>
 
-  <!-- ✅ mint + wallet scripts -->
-  <script src="web3/mint.js"></script>
+  <!-- wallet + mint + welcome modal -->
   <script src="web3/wallet.js"></script>
-
+  <script src="web3/mint.js"></script>
+  <script src="web3/welcome.js"></script>
 </body>
 </html>
-
