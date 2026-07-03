@@ -6,48 +6,43 @@
 
   <!-- Meta Tags -->
   <meta property="og:title" content="2048 Robinhood" />
-  <meta property="og:description" content="Play 2048 on Robinhood Chain and Earn 2048!" />
+  <meta property="og:description" content="Play 2048 on Robinhood Chain and earn $2048!" />
   <meta property="og:image" content="https://2048.turquoiselab.io/meta/icons/2048_base_blue_icon_medium.png" />
-  <meta property="og:url" content="https://sprout.turquoiselab.io" />
+  <meta property="og:url" content="https://2048robin.vercel.app" />
   <meta name="twitter:card" content="summary_large_image" />
 
   <link href="style/main.css" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="favicon.ico">
   <link rel="apple-touch-icon" href="meta/apple-touch-icon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
-
-  <style>
-    body { 
-      background: #0A1F0F; 
-      color: #ffffff; 
-      font-family: Arial, sans-serif; 
-    }
-    .title { color: #00C853 !important; }
-    #connect-btn { 
-      background: #00C853 !important; 
-      color: black !important; 
-      font-weight: bold;
-    }
-    .game-container { background: #0A2A1A; }
-    .grid-cell { background: #0F3D2A; }
-    .restart-button, .keep-playing-button, .retry-button {
-      background: #00C853 !important;
-      color: black !important;
-    }
-  </style>
 </head>
 
 <body>
-  <!-- CONNECT WALLET BUTTON -->
-  <div id="wallet-box" style="position:fixed; top:15px; right:15px; z-index:9999;">
-    <button id="connect-btn" 
-            style="padding:10px 18px; border-radius:8px; font-size:16px; cursor:pointer;">
-      Connect Wallet
-    </button>
-    <div id="wallet-status" 
-         style="margin-top:6px; color:#aaa; font-size:14px;">
-      Not connected
+  <!-- WELCOME / ANNOUNCEMENT MODAL (first visit only) -->
+  <div id="welcome-overlay" class="welcome-overlay">
+    <div class="welcome-modal">
+      <span class="welcome-badge">Robinhood Chain &middot; Testnet</span>
+      <h2>2048 artık Robinhood Chain'de</h2>
+      <p>
+        Klasik 2048'i oyna, skorunu yükselt ve <strong>$2048</strong> token
+        ekonomisine katıl. Oyun herkese ücretsiz &mdash; cüzdan bağlamak
+        sadece ödüller ve liderlik tablosu için gerekir.
+      </p>
+      <p class="welcome-disclaimer">
+        Bu proje Robinhood Markets, Inc. ile resmi olarak ilişkili değildir
+        ve bağımsız bir topluluk projesidir. Şu an Robinhood Chain testnet
+        üzerinde çalışır; token ödülleri deneyseldir.
+      </p>
+      <div class="welcome-actions">
+        <button id="welcome-close" class="welcome-close">Oynamaya başla</button>
+      </div>
     </div>
+  </div>
+
+  <!-- CONNECT WALLET BUTTON -->
+  <div id="wallet-box">
+    <button id="connect-btn">Connect Wallet</button>
+    <div id="wallet-status">Not connected</div>
   </div>
 
   <div class="container">
@@ -62,7 +57,7 @@
     <div class="above-game">
       <p class="game-intro">
         Join the numbers and get to the <strong>2048 tile!</strong><br>
-        Earn <strong>2048</strong> on Robinhood Chain!
+        Earn <strong>$2048</strong> on Robinhood Chain!
       </p>
       <a class="restart-button">New Game</a>
     </div>
@@ -107,9 +102,9 @@
     </div>
 
     <p class="game-explanation">
-      <strong>How to play:</strong> Use your <strong>arrow keys</strong> to move the tiles. 
+      <strong>How to play:</strong> Use your <strong>arrow keys</strong> to move the tiles.
       When two tiles with the same number touch, they <strong>merge into one!</strong><br><br>
-      <strong>Higher score = Earn more 2048 rewards on Robinhood Chain!</strong>
+      <strong>Higher score = more $2048 rewards on Robinhood Chain!</strong>
     </p>
   </div>
 
@@ -128,9 +123,9 @@
   <!-- ethers.js -->
   <script src="https://cdn.jsdelivr.net/npm/ethers@6.8.0/dist/ethers.umd.min.js"></script>
 
-  <!-- mint + wallet scripts -->
-  <script src="web3/mint.js"></script>
+  <!-- wallet + mint + welcome modal -->
   <script src="web3/wallet.js"></script>
-
+  <script src="web3/mint.js"></script>
+  <script src="web3/welcome.js"></script>
 </body>
 </html>
