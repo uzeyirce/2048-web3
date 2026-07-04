@@ -15,6 +15,9 @@
   <link rel="shortcut icon" href="favicon.ico">
   <link rel="apple-touch-icon" href="meta/apple-touch-icon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+
+  <!-- Telegram Mini App SDK -- safe to load even outside Telegram, it just no-ops -->
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 
 <body>
@@ -118,6 +121,24 @@
         <li class="leaderboard-empty">Loading...</li>
       </ul>
     </div>
+
+    <div class="token-stats">
+      <h2>Token Transparency</h2>
+      <p class="leaderboard-hint">Live on-chain numbers, verifiable by anyone — no wallet required to view.</p>
+      <div class="token-stats-grid">
+        <div class="token-stat-card">
+          <span class="token-stat-label">Creator wallet holds</span>
+          <span class="token-stat-value" id="stat-creator-balance">Loading...</span>
+          <a class="token-stat-link" href="https://robinhoodchain.blockscout.com/address/0x43279eFf8fe1897bc35c70bB926eDa753878c4F6" target="_blank" rel="noopener">View on explorer →</a>
+        </div>
+        <div class="token-stat-card">
+          <span class="token-stat-label">Burned forever</span>
+          <span class="token-stat-value" id="stat-burned">Loading...</span>
+          <span class="token-stat-sub" id="stat-burned-pct"></span>
+          <a class="token-stat-link" href="https://fun.noxa.fi/robinhood/profile/0x000000000000000000000000000000000000dead" target="_blank" rel="noopener">View on Noxa →</a>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- Game scripts -->
@@ -135,10 +156,12 @@
   <!-- ethers.js -->
   <script src="https://cdn.jsdelivr.net/npm/ethers@6.8.0/dist/ethers.umd.min.js"></script>
 
-  <!-- wallet + mint + leaderboard + welcome modal -->
+  <!-- wallet + mint + leaderboard + token stats + telegram + welcome modal -->
+  <script src="web3/telegram.js"></script>
   <script src="web3/wallet.js"></script>
   <script src="web3/mint.js"></script>
   <script src="web3/leaderboard.js"></script>
+  <script src="web3/token-stats.js"></script>
   <script src="web3/welcome.js"></script>
 </body>
 </html>

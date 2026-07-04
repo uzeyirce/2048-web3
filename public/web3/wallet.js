@@ -1,3 +1,12 @@
+// TODO (Telegram Mini App): window.ethereum (MetaMask/Rabby extension)
+// does not exist inside Telegram's in-app browser -- only on desktop
+// browsers with the extension installed. To let Telegram users connect
+// a wallet, add WalletConnect (get a free Project ID at cloud.reown.com,
+// then use @walletconnect/ethereum-provider or Reown AppKit) as an
+// alternative connection path when window.isTelegramMiniApp is true.
+// Not implemented yet -- connectWallet() below just shows a fallback
+// message for Telegram users in the meantime.
+
 // Robinhood Chain — MAINNET config (verified against docs.robinhood.com/chain
 // and docs.robinhood.com/chain/connecting, July 2026)
 const ROBINHOOD_CHAIN = {
@@ -39,7 +48,14 @@ async function ensureRobinhoodChain() {
 // Wallet Connect Logic
 async function connectWallet() {
   if (!window.ethereum) {
-    alert("No wallet found. Please install Rabby or MetaMask.");
+    if (window.isTelegramMiniApp) {
+      // Telegram's in-app browser has no injected wallet (no MetaMask/Rabby
+      // extension exists there). Real fix is WalletConnect -- see wallet.js
+      // TODO below. For now, tell the player plainly instead of failing silently.
+      alert("Wallet connect inside Telegram needs WalletConnect support, which isn't wired up yet. For now, open this game in your phone's browser (Chrome/Safari) to connect your wallet.");
+    } else {
+      alert("No wallet found. Please install Rabby or MetaMask.");
+    }
     return;
   }
 

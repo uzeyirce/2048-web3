@@ -776,3 +776,63 @@ hr {
   font-size: 14px;
   text-align: center;
 }
+
+// ---- Token transparency stats ----
+.token-stats {
+  margin-top: 20px;
+  background: $game-container-background;
+  border-radius: 10px;
+  padding: 20px 24px;
+  box-sizing: border-box;
+
+  h2 {
+    margin: 0;
+    font-size: 20px;
+    color: $bright-text-color;
+  }
+}
+
+.token-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 14px;
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.token-stat-card {
+  background: rgba($accent, .06);
+  border: 1px solid rgba($accent, .18);
+  border-radius: 8px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.token-stat-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .4px;
+  color: rgba($body-text-color, .55);
+}
+
+.token-stat-value {
+  font-size: 22px;
+  font-weight: bold;
+  color: $accent;
+}
+
+.token-stat-sub {
+  font-size: 12px;
+  color: rgba($body-text-color, .5);
+}
+
+.token-stat-link {
+  margin-top: 6px;
+  font-size: 12px;
+  color: rgba($accent, .85);
+}
