@@ -149,6 +149,27 @@
       </ol>
     </div>
 
+    <!-- JACKPOT POOL -->
+    <div class="jackpot-section">
+      <div class="jackpot-glow"></div>
+      <div class="jackpot-inner">
+        <div class="jackpot-badge">🏆 JACKPOT POOL</div>
+        <div id="jackpot-amount" class="jackpot-amount">Loading...</div>
+        <div id="jackpot-sub" class="jackpot-sub">Reach the 2048 tile to win it all!</div>
+        <a class="jackpot-verify"
+           href="https://robinhoodchain.blockscout.com/address/0x43279eFf8fe1897bc35c70bB926eDa753878c4F6"
+           target="_blank" rel="noopener">Verify on-chain →</a>
+      </div>
+    </div>
+
+    <!-- CLAIM SECTION — hidden until player wins -->
+    <div id="jackpot-claim-section" class="jackpot-claim-section" style="display:none;">
+      <h2>🎉 You reached 2048!</h2>
+      <p>You're the winner — claim the entire jackpot pool right now.</p>
+      <button id="jackpot-claim-btn" class="jackpot-claim-btn">Claim Jackpot 🏆</button>
+      <p class="jackpot-claim-note">Make sure your wallet is connected before claiming.</p>
+    </div>
+
     <!-- LEADERBOARD -->
     <div class="leaderboard">
       <div class="leaderboard-header">
@@ -222,6 +243,7 @@
   <script src="web3/leaderboard.js"></script>
   <script src="web3/token-stats.js"></script>
   <script src="web3/price-ticker.js"></script>
+  <script src="web3/jackpot.js"></script>
   <script src="web3/welcome.js"></script>
 </body>
 </html>

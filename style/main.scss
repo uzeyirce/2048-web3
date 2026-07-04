@@ -1009,3 +1009,96 @@ body { padding-top: 34px; }
     }
   }
 }
+
+// ---- Jackpot pool ----
+.jackpot-section {
+  margin-top: 20px;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  background: $game-container-background;
+  border: 1px solid rgba($accent, .4);
+  text-align: center;
+  padding: 28px 20px 24px;
+}
+
+.jackpot-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba($accent, .12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.jackpot-inner { position: relative; z-index: 1; }
+
+.jackpot-badge {
+  display: inline-block;
+  background: rgba($accent, .15);
+  color: $accent;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: .6px;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+}
+
+.jackpot-amount {
+  font-size: 42px;
+  font-weight: bold;
+  color: $accent;
+  line-height: 1.1;
+  text-shadow: 0 0 20px rgba($accent, .4);
+}
+
+.jackpot-sub {
+  margin-top: 8px;
+  font-size: 15px;
+  color: rgba($body-text-color, .7);
+}
+
+.jackpot-verify {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 12px;
+  color: rgba($accent, .7);
+  text-decoration: none;
+
+  &:hover { color: $accent; }
+}
+
+// Claim section — shown only when player wins
+.jackpot-claim-section {
+  margin-top: 16px;
+  background: $game-container-background;
+  border: 1px solid $accent;
+  border-radius: 12px;
+  padding: 24px 20px;
+  text-align: center;
+
+  h2 { margin: 0 0 10px; color: $accent; font-size: 24px; }
+  p  { color: rgba($body-text-color, .8); font-size: 15px; margin: 0 0 16px; }
+}
+
+.jackpot-claim-btn {
+  @include button;
+  font-size: 18px;
+  padding: 0 28px;
+  height: 50px;
+  line-height: 52px;
+  border: none;
+  cursor: pointer;
+  animation: pulse-green 2s infinite;
+}
+
+@keyframes pulse-green {
+  0%, 100% { box-shadow: 0 0 0 0 rgba($accent, .5); }
+  50%       { box-shadow: 0 0 0 10px rgba($accent, 0); }
+}
+
+.jackpot-claim-note {
+  margin-top: 10px !important;
+  font-size: 12px !important;
+  color: rgba($body-text-color, .4) !important;
+}
