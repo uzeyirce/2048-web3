@@ -2,7 +2,7 @@
 // Private key NEVER touches this file — claim goes through /api/claim-jackpot.
 
 const TOKEN_ADDRESS = "0x5e3621092fa9a5eca3477788a47e4580c4ab73e3";
-const REWARD_WALLET  = "0x43279eFf8fe1897bc35c70bB926eDa753878c4F6"; // creator/reward wallet — read-only
+const REWARD_WALLET  = "0x81928bBd40a608329A5807Cd2964Bb339A364103"; // reward pool wallet — read-only
 const RPC_URL        = "https://rpc.mainnet.chain.robinhood.com";
 
 const ERC20_BALANCE_ABI = [
