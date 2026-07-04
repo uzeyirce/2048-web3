@@ -836,3 +836,176 @@ hr {
   font-size: 12px;
   color: rgba($accent, .85);
 }
+
+// ---- Live price ticker ----
+#price-ticker {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba($game-container-background, .95);
+  border-bottom: 1px solid rgba($accent, .2);
+  padding: 6px 16px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 9998;
+  backdrop-filter: blur(6px);
+
+  .ticker-label {
+    color: rgba($body-text-color, .5);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .4px;
+  }
+
+  .ticker-sep { color: rgba($body-text-color, .2); }
+
+  #ticker-price { color: $bright-text-color; font-weight: bold; }
+  #ticker-mcap { color: $bright-text-color; font-weight: bold; }
+
+  .ticker-change { font-weight: bold; }
+  .ticker-up { color: $accent; }
+  .ticker-down { color: #ff5252; }
+}
+
+// push page content below the fixed ticker
+body { padding-top: 34px; }
+
+// ---- Milestone progress bar ----
+.milestone-section {
+  margin-top: 20px;
+  background: $game-container-background;
+  border-radius: 10px;
+  padding: 18px 20px;
+}
+
+.milestone-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+
+  h2 { margin: 0; font-size: 18px; color: $bright-text-color; }
+}
+
+.milestone-target {
+  font-size: 13px;
+  color: $accent;
+  font-weight: bold;
+}
+
+.milestone-bar-track {
+  background: rgba($accent, .12);
+  border-radius: 100px;
+  height: 10px;
+  overflow: hidden;
+}
+
+.milestone-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, darken($accent, 10%), $accent);
+  border-radius: 100px;
+  transition: width 1s ease;
+}
+
+.milestone-desc {
+  margin: 8px 0 0;
+  font-size: 13px;
+  color: rgba($body-text-color, .55);
+}
+
+// ---- How to buy ----
+.how-to-buy {
+  margin-top: 20px;
+  background: $game-container-background;
+  border-radius: 10px;
+  padding: 20px 24px;
+
+  h2 { margin: 0 0 16px; font-size: 20px; color: $bright-text-color; }
+}
+
+.htb-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    font-size: 14px;
+    color: $body-text-color;
+    line-height: 1.5;
+
+    code {
+      font-size: 11px;
+      background: rgba($accent, .1);
+      color: $accent;
+      padding: 2px 6px;
+      border-radius: 4px;
+      word-break: break-all;
+    }
+  }
+}
+
+.htb-num {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  background: $accent;
+  color: $accent-text;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+// ---- Lore / narrative ----
+.lore-section {
+  margin-top: 20px;
+  background: $game-container-background;
+  border-radius: 10px;
+  padding: 20px 24px;
+
+  h2 { margin: 0 0 12px; font-size: 20px; color: $bright-text-color; }
+
+  p {
+    color: rgba($body-text-color, .85);
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0 0 10px;
+  }
+}
+
+// ---- Social links ----
+.social-section {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-bottom: 40px;
+}
+
+.social-btn {
+  @include button;
+  font-size: 14px;
+  padding: 0 18px;
+  text-decoration: none;
+
+  &--outline {
+    background: transparent;
+    border: 1px solid rgba($accent, .5);
+    color: $accent;
+
+    &:hover {
+      background: rgba($accent, .1);
+    }
+  }
+}

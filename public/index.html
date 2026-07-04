@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>2048 Robinhood</title>
+  <title>2048 Robinhood — Play & Earn on Robinhood Chain</title>
 
-  <!-- Meta Tags -->
   <meta property="og:title" content="2048 Robinhood" />
   <meta property="og:description" content="Play 2048 on Robinhood Chain and earn $2048! The creator wallet is used for reward distribution and game development only." />
   <meta property="og:image" content="https://2048.turquoiselab.io/meta/icons/2048_base_blue_icon_medium.png" />
@@ -16,40 +15,42 @@
   <link rel="apple-touch-icon" href="meta/apple-touch-icon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
 
-  <!-- Telegram Mini App SDK -- safe to load even outside Telegram, it just no-ops -->
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 
 <body>
-  <!-- WELCOME / ANNOUNCEMENT MODAL (first visit only) -->
+  <!-- WELCOME MODAL -->
   <div id="welcome-overlay" class="welcome-overlay">
     <div class="welcome-modal">
       <span class="welcome-badge">Robinhood Chain &middot; Mainnet</span>
       <h2>2048 is now on Robinhood Chain</h2>
-      <p>
-        Play the classic 2048, climb the leaderboard, and take part in the
-        <strong>$2048</strong> token economy. The game is free for
-        everyone &mdash; connecting a wallet is only needed for rewards
-        and the leaderboard.
-      </p>
-      <p class="welcome-disclaimer">
-        This project is an independent community project and is not
-        officially affiliated with Robinhood Markets, Inc. It runs on
-        Robinhood Chain mainnet; token rewards are experimental.
-      </p>
+      <p>Play the classic 2048, climb the leaderboard, and earn <strong>$2048</strong> token rewards. Free to play — wallet only needed for rewards.</p>
+      <p class="welcome-disclaimer">Independent community project. Not affiliated with Robinhood Markets, Inc.</p>
       <div class="welcome-actions">
         <button id="welcome-close" class="welcome-close">Start playing</button>
       </div>
     </div>
   </div>
 
-  <!-- CONNECT WALLET BUTTON -->
+  <!-- LIVE PRICE TICKER -->
+  <div id="price-ticker">
+    <span class="ticker-label">$2048</span>
+    <span id="ticker-price">—</span>
+    <span id="ticker-change" class="ticker-change">—</span>
+    <span class="ticker-sep">|</span>
+    <span class="ticker-label">MCap</span>
+    <span id="ticker-mcap">—</span>
+  </div>
+
+  <!-- CONNECT WALLET -->
   <div id="wallet-box">
     <button id="connect-btn">Connect Wallet</button>
     <div id="wallet-status">Not connected</div>
   </div>
 
   <div class="container">
+
+    <!-- HERO -->
     <div class="heading">
       <h1 class="title">2048 Robinhood</h1>
       <div class="scores-container">
@@ -60,12 +61,12 @@
 
     <div class="above-game">
       <p class="game-intro">
-        Join the numbers and get to the <strong>2048 tile!</strong><br>
-        Earn <strong>$2048</strong> on Robinhood Chain!
+        Join the numbers, reach the <strong>2048 tile</strong> and earn <strong>$2048</strong> on Robinhood Chain!
       </p>
       <a class="restart-button">New Game</a>
     </div>
 
+    <!-- GAME -->
     <div class="game-container">
       <div class="game-message">
         <p></p>
@@ -74,43 +75,81 @@
           <a class="retry-button">Try again</a>
         </div>
       </div>
-
       <div class="grid-container">
         <div class="grid-row">
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
+          <div class="grid-cell"></div><div class="grid-cell"></div>
+          <div class="grid-cell"></div><div class="grid-cell"></div>
         </div>
         <div class="grid-row">
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
+          <div class="grid-cell"></div><div class="grid-cell"></div>
+          <div class="grid-cell"></div><div class="grid-cell"></div>
         </div>
         <div class="grid-row">
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
+          <div class="grid-cell"></div><div class="grid-cell"></div>
+          <div class="grid-cell"></div><div class="grid-cell"></div>
         </div>
         <div class="grid-row">
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
-          <div class="grid-cell"></div>
+          <div class="grid-cell"></div><div class="grid-cell"></div>
+          <div class="grid-cell"></div><div class="grid-cell"></div>
         </div>
       </div>
-
       <div class="tile-container"></div>
     </div>
 
     <p class="game-explanation">
-      <strong>How to play:</strong> Use your <strong>arrow keys</strong> to move the tiles.
-      When two tiles with the same number touch, they <strong>merge into one!</strong><br><br>
-      <strong>Higher score = more $2048 rewards on Robinhood Chain!</strong>
+      <strong>How to play:</strong> Use <strong>arrow keys</strong> (or swipe on mobile) to move tiles.
+      Matching tiles merge — reach <strong>2048</strong> to win.<br>
+      Higher score = more <strong>$2048</strong> rewards!
     </p>
 
+    <!-- MILESTONE / MCAP PROGRESS -->
+    <div class="milestone-section">
+      <div class="milestone-header">
+        <h2>Next milestone</h2>
+        <span id="milestone-label" class="milestone-target">Target: $1M MCap</span>
+      </div>
+      <div class="milestone-bar-track">
+        <div id="milestone-bar" class="milestone-bar-fill" style="width:0%"></div>
+      </div>
+      <p id="milestone-desc" class="milestone-desc">Every player who climbs the leaderboard helps push the needle.</p>
+    </div>
+
+    <!-- HOW TO BUY -->
+    <div class="how-to-buy">
+      <h2>How to get $2048</h2>
+      <ol class="htb-steps">
+        <li>
+          <span class="htb-num">1</span>
+          <div>
+            <strong>Install a wallet</strong><br>
+            <span>Get <a href="https://rabby.io" target="_blank" rel="noopener">Rabby</a> or MetaMask on your browser.</span>
+          </div>
+        </li>
+        <li>
+          <span class="htb-num">2</span>
+          <div>
+            <strong>Add Robinhood Chain</strong><br>
+            <span>Click "Connect Wallet" on this page — it adds the network automatically.</span>
+          </div>
+        </li>
+        <li>
+          <span class="htb-num">3</span>
+          <div>
+            <strong>Bridge ETH</strong><br>
+            <span>Bridge ETH to Robinhood Chain via <a href="https://docs.robinhood.com/chain/connecting" target="_blank" rel="noopener">official bridge</a>.</span>
+          </div>
+        </li>
+        <li>
+          <span class="htb-num">4</span>
+          <div>
+            <strong>Buy $2048</strong><br>
+            <span>Swap on <a href="https://fun.noxa.fi" target="_blank" rel="noopener">fun.noxa.fi</a> using contract <code>0x5e3621092fa9a5eca3477788a47e4580c4ab73e3</code>.</span>
+          </div>
+        </li>
+      </ol>
+    </div>
+
+    <!-- LEADERBOARD -->
     <div class="leaderboard">
       <div class="leaderboard-header">
         <h2>Leaderboard</h2>
@@ -122,13 +161,15 @@
       </ul>
     </div>
 
+    <!-- TOKEN TRANSPARENCY -->
     <div class="token-stats">
       <h2>Token Transparency</h2>
-      <p class="leaderboard-hint">Live on-chain numbers, verifiable by anyone — no wallet required to view.</p>
+      <p class="leaderboard-hint">Live on-chain — verifiable by anyone, no wallet required.</p>
       <div class="token-stats-grid">
         <div class="token-stat-card">
           <span class="token-stat-label">Creator wallet holds</span>
           <span class="token-stat-value" id="stat-creator-balance">Loading...</span>
+          <span class="token-stat-sub">Used for rewards &amp; development only</span>
           <a class="token-stat-link" href="https://robinhoodchain.blockscout.com/address/0x43279eFf8fe1897bc35c70bB926eDa753878c4F6" target="_blank" rel="noopener">View on explorer →</a>
         </div>
         <div class="token-stat-card">
@@ -139,7 +180,27 @@
         </div>
       </div>
     </div>
-  </div>
+
+    <!-- NARRATIVE / LORE -->
+    <div class="lore-section">
+      <h2>The story</h2>
+      <p>
+        Robin Hood took from the rich and gave to the many. <strong>$2048</strong> does the same on-chain —
+        every token in the creator wallet goes back to the community through rewards, giveaways, and game development.
+        No VC allocation. No presale. Just a game, a chain, and a growing community.
+      </p>
+      <p>Play free. Earn together. Merge tiles and merge wealth.</p>
+    </div>
+
+    <!-- SOCIAL LINKS -->
+    <div class="social-section">
+      <a class="social-btn" href="https://x.com" target="_blank" rel="noopener">𝕏 Twitter</a>
+      <a class="social-btn" href="https://t.me" target="_blank" rel="noopener">✈ Telegram</a>
+      <a class="social-btn" href="https://fun.noxa.fi" target="_blank" rel="noopener">Buy $2048</a>
+      <a class="social-btn social-btn--outline" href="https://robinhoodchain.blockscout.com/token/0x5e3621092fa9a5eca3477788a47e4580c4ab73e3" target="_blank" rel="noopener">Explorer</a>
+    </div>
+
+  </div><!-- /.container -->
 
   <!-- Game scripts -->
   <script src="js/bind_polyfill.js"></script>
@@ -153,15 +214,14 @@
   <script src="js/game_manager.js"></script>
   <script src="js/application.js"></script>
 
-  <!-- ethers.js -->
   <script src="https://cdn.jsdelivr.net/npm/ethers@6.8.0/dist/ethers.umd.min.js"></script>
 
-  <!-- wallet + mint + leaderboard + token stats + telegram + welcome modal -->
   <script src="web3/telegram.js"></script>
   <script src="web3/wallet.js"></script>
   <script src="web3/mint.js"></script>
   <script src="web3/leaderboard.js"></script>
   <script src="web3/token-stats.js"></script>
+  <script src="web3/price-ticker.js"></script>
   <script src="web3/welcome.js"></script>
 </body>
 </html>
